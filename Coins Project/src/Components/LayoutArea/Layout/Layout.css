@@ -1,0 +1,20 @@
+main {
+  width: 100%;
+}
+
+.Layout {
+  width: 100%;
+}
+
+.Layout main {
+  display: block;
+  align-items: unset;
+}
+
+.MainContent {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}

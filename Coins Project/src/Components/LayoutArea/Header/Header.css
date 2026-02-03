@@ -1,0 +1,66 @@
+.scroll-header {
+    height: 50vh;
+    background-image: url("/images/pexels-steve-30111471.jpg");
+    background-size: cover;
+    background-position: center;
+    transition: background-position 0.1s linear;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scroll-content {
+    background: none;        
+    padding: 0;              
+    border-radius: 0;
+    text-align: center;
+}
+
+.energy-content {
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+.scroll-content h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 96px;      
+    font-weight: 900;
+    letter-spacing: 4px;
+
+    color: #ecfeff;
+
+    text-shadow:
+        0 0 25px rgba(6, 182, 212, 0.9),
+        0 0 60px rgba(6, 182, 212, 0.6),
+        0 0 120px rgba(6, 182, 212, 0.4);
+}
+
+.scroll-content p {
+    margin-top: 18px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+
+    color: #cffafe;
+}
+.scroll-header {
+    position: relative;
+    overflow: hidden;
+}
+.scroll-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0),
+        #4f7f8a
+    );
+
+    pointer-events: none;
+}
