@@ -9,11 +9,12 @@ import { CredentialsModel } from "../3-models/credentials-model";
 // Business logic for user registration and login.
 class UserService {
 
-    // Registers a user, assigns default role, and returns auth token.
+    // Registers a user, hashes password, assigns default role, and returns auth token.
     public async register(user: UserModel): Promise<string> {
         user.validate();
         if (await this.checkUserExist(user)) throw new UnauthorizedError("Email already exists");
         user.roleId = Role.User;
+        user.password = await cyber.hashPassword(user.password!);
         const sql = "insert into users (firstName, lastName, email, password, roleId) values (?, ?, ?, ?, ?)";
         const values = [user.firstName, user.lastName, user.email, user.password, user.roleId];
         const info: OkPacketParams = await dal.execute(sql, values) as OkPacketParams;
@@ -23,14 +24,16 @@ class UserService {
         return token;
     }
 
-    // Authenticates credentials and returns signed JWT token.
+    // Authenticates credentials by hashing input password and comparing with stored hash, then returns signed JWT token.
     public async login(credentials: CredentialsModel): Promise<string> {
         credentials.validate();
-        const sql = "select * from users where email = ? and password = ?";
-        const values = [credentials.email, credentials.password];
-        const users = await dal.execute(sql, values) as UserModel[];//
-        const user = users[0];//
+        const sql = "select * from users where email = ?";
+        const values = [credentials.email];
+        const users = await dal.execute(sql, values) as UserModel[];
+        const user = users[0];
         if (!user) throw new UnauthorizedError("Incorrect email or password");
+        const isPasswordValid = await cyber.comparePassword(credentials.password, user.password!);
+        if (!isPasswordValid) throw new UnauthorizedError("Incorrect email or password");
         const token = cyber.generateToken(user);
         return token;
     }

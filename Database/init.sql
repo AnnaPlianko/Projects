@@ -11,7 +11,7 @@ create table if not exists users (
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     roleId TINYINT NOT NULL DEFAULT 2
 );
 
@@ -33,6 +33,7 @@ create table if not exists likes (
     foreign key (vacationId) references `vacations-list`(id) on delete cascade
 );
 
--- Add an admin user (password: Admin123)
+-- Add an admin user with hashed password
+-- Password: Admin123 (hashed with bcryptjs)
 insert ignore into users (firstName, lastName, email, password, roleId)
-values ('Admin', 'User', 'admin@vacation.com', 'Admin123', 1);
+values ('Admin', 'User', 'admin@vacation.com', '$2a$10$pQQM0u3Dz6YY6QBBJQqq..TsQLlKHMdD4H0h5hJ5pYf8v3hXhI.R.', 1);

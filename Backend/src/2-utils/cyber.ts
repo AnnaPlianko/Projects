@@ -3,9 +3,21 @@ import { SignOptions } from "jsonwebtoken";
 import jwt from 'jsonwebtoken';
 import { appConfig } from "./app-config";
 import { Role } from "../3-models/enum";
+import bcrypt from "bcryptjs";
 
-// JWT helper for issuing tokens and verifying role-based access.
+// JWT helper for issuing tokens, verifying role-based access, and hashing passwords.
 class Cyber {
+
+    // Hashes a password using bcrypt for secure storage.
+    public async hashPassword(password: string): Promise<string> {
+        const salt = await bcrypt.genSalt(10);
+        return await bcrypt.hash(password, salt);
+    }
+
+    // Compares a plain password against a bcrypt hash.
+    public async comparePassword(password: string, hash: string): Promise<boolean> {
+        return await bcrypt.compare(password, hash);
+    }
 
    // Generates a signed JWT token with user info payload and expiration.
     public generateToken(user: UserModel): string {
