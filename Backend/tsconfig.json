@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ESnext",
+        "module": "nodenext",
+        "moduleResolution": "NodeNext",
+        "esModuleInterop": true,
+        "strict": true
+
+    }
+}

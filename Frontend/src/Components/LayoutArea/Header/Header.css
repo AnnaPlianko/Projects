@@ -1,0 +1,19 @@
+.Header h1 {
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 3px;
+    text-align: center;
+    z-index: 2;
+
+    background: linear-gradient(135deg, #ffe066 0%, #ffb347 35%, #ff8c42 60%, #ffe066 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    filter: drop-shadow(0 4px 18px rgba(255, 160, 50, 0.55));
+
+    animation: fadeInUp 1s ease;
+}

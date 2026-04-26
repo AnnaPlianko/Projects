@@ -1,0 +1,117 @@
+.AdminPage {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 20px 24px 28px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.admin-header h2 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-style: italic;
+    letter-spacing: 1px;
+    color: #f8fafc;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.admin-actions-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.admin-actions-bar button {
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn-add {
+    background: linear-gradient(135deg, #34b6dc, #0b6fa5);
+    box-shadow: 0 6px 16px rgba(11, 111, 165, 0.35);
+}
+
+.btn-report {
+    background: linear-gradient(135deg, #e69a5c, #d46a4f);
+    box-shadow: 0 6px 16px rgba(212, 106, 79, 0.35);
+}
+
+.btn-csv {
+    background: linear-gradient(135deg, #34b6dc, #0b6fa5);
+    box-shadow: 0 6px 16px rgba(11, 111, 165, 0.35);
+}
+
+.admin-actions-bar button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.03);
+}
+
+.vacation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(260px, 340px));
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+@media (max-width: 1200px) {
+    .vacation-grid {
+        grid-template-columns: repeat(2, minmax(260px, 340px));
+    }
+}
+
+@media (max-width: 900px) {
+    .vacation-grid {
+        grid-template-columns: minmax(260px, 420px);
+    }
+}
+
+@media (max-width: 640px) {
+    .vacation-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.loading-msg { text-align: center; color: #666; padding: 40px; }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px 0;
+}
+.pagination button {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+.pagination button:hover:not(:disabled) { background: #f0f0f0; }
+.pagination button.active { background: #3498db; color: white; border-color: #3498db; }
+.pagination button:disabled { opacity: 0.4; cursor: default; }
+
+@media (max-width: 768px) {
+    .admin-header h2 {
+        font-size: 30px;
+    }
+}

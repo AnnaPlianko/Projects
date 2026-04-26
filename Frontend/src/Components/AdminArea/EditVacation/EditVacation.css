@@ -1,0 +1,85 @@
+.EditVacation {
+    max-width: 430px;
+    margin: 26px auto;
+    padding: 22px;
+    background: rgba(255, 255, 255, 0.93);
+    border-radius: 22px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.EditVacation h2 {
+    margin: 0 0 16px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    font-style: italic;
+    letter-spacing: 1.2px;
+    background: linear-gradient(135deg, #ffe066 0%, #ffb347 35%, #ff8c42 60%, #ffe066 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 4px 14px rgba(255, 162, 66, 0.45));
+}
+
+.EditVacation form { display: flex; flex-direction: column; gap: 10px; }
+
+.EditVacation label { font-weight: 700; font-size: 14px; color: #334155; }
+
+.EditVacation input, .EditVacation textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 2px solid #dbeafe;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.EditVacation input:focus, .EditVacation textarea:focus {
+    outline: none;
+    border-color: #48cae4;
+    box-shadow: 0 0 0 4px rgba(72, 202, 228, 0.2);
+}
+
+.form-buttons { display: flex; gap: 10px; margin-top: 8px; }
+
+.form-buttons button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-buttons button:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.form-buttons button[type="submit"] {
+    background: linear-gradient(135deg, #48cae4, #0077b6);
+    color: white;
+    box-shadow: 0 8px 24px rgba(0, 119, 182, 0.45);
+}
+
+.form-buttons button[type="button"] {
+    background: linear-gradient(135deg, #f4a261, #e76f51);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(231, 111, 81, 0.45);
+}
+
+@media (max-width: 768px) {
+    .EditVacation {
+        margin: 16px;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .EditVacation h2 {
+        font-size: 27px;
+    }
+}
