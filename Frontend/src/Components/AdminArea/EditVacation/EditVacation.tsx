@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import type { VacationModel } from "../../../Models/VacationModel";
@@ -12,6 +12,8 @@ export function EditVacation() {
     const navigate = useNavigate();
     const params = useParams();
     const id = Number(params.vacationId);
+    const [currentImageUrl, setCurrentImageUrl] = useState("");
+    const [currentImageName, setCurrentImageName] = useState("");
 
     const startDate = watch("startDate");
 
@@ -25,6 +27,8 @@ export function EditVacation() {
                 setValue("startDate", vacation.startDate!.toString().split("T")[0]);
                 setValue("endDate", vacation.endDate!.toString().split("T")[0]);
                 setValue("price", vacation.price!);
+                setCurrentImageUrl(vacation.imageUrl || "");
+                setCurrentImageName(vacation.imageUrl?.split("/").pop() || "");
             })
             .catch(err => notify.error(err));
     }, [id]);
@@ -60,6 +64,17 @@ export function EditVacation() {
 
                 <label>Price ($):</label>
                 <input type="number" {...register("price")} min="0" max="10000" step="0.01" required />
+
+                {currentImageUrl && (
+                    <>
+                        <label>Current image:</label>
+                        <img
+                            src={currentImageUrl}
+                            alt={currentImageName || "Current vacation"}
+                            style={{ width: "100%", maxHeight: "220px", objectFit: "cover", borderRadius: "10px" }}
+                        />
+                    </>
+                )}
 
                 <label>Image (optional — leave empty to keep current):</label>
                 <input type="file" {...register("image")} accept="image/*" />
