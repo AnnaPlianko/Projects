@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} - Chat{% endblock %}
+
+{% block content %}
+<!-- Chat page structure with messages area and input section -->
+<div class="chat-page">
+  <div class="chat-container">
+    <div id="messages-wrapper">
+      <div id="empty-state" class="chat-empty">
+        <div class="empty-icon">✦</div>
+        <h2>How can I help today?</h2>
+        <p>Start a conversation below</p>
+      </div>
+      <div id="messages-list" class="messages-list" style="display:none;"></div>
+    </div>
+    
+<!-- Chat input area with textarea and buttons -->
+    <div class="chat-input-area">
+      <div class="input-row">
+        <textarea id="chat-input" class="chat-input" placeholder="Ask anything..." rows="1"></textarea>
+        <button id="send-btn" class="send-btn">➤</button>
+      </div>
+      <div class="chat-actions">
+        <button id="new-chat-btn" class="new-chat-btn">✎ New chat</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+<!-- Include chat.js script for handling chat interactions -->
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}
